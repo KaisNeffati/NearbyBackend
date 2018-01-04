@@ -7,8 +7,8 @@ import java.util.Collection;
 
 /**
  * Created by Kais NEFFATI on 04/01/2018.
- */
-public interface DeliveriesSerivce {
+         */
+public interface DeliveriesService {
     Collection<Deliveries> search(final DeliveriesSearchRequest request);
     Deliveries create(Deliveries deliveries);
     Deliveries update(Deliveries deliveries);

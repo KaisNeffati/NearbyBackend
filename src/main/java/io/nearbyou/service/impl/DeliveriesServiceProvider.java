@@ -3,7 +3,7 @@ package io.nearbyou.service.impl;
 import io.nearbyou.dataaccessobject.DeliveriesDao;
 import io.nearbyou.domainObject.models.impl.Deliveries;
 import io.nearbyou.domainObject.requests.DeliveriesSearchRequest;
-import io.nearbyou.service.DeliveriesSerivce;
+import io.nearbyou.service.DeliveriesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ import java.util.Collection;
  * Created by Kais NEFFATI on 04/01/2018.
  */
 @Service
-public class DeliveriesServiceProvider implements DeliveriesSerivce {
+public class DeliveriesServiceProvider implements DeliveriesService {
 
     private final DeliveriesDao deliveriesDao;
 
