@@ -6,7 +6,7 @@ import io.nearbyou.domainValue.Ranking;
 /**
  * Created by Kais NEFFATI on 19/12/2017.
  */
-public class DeliverableSearchRequest {
+public class DeliveriesSearchRequest {
     private String location;
     private Category category;
     private Ranking rank;

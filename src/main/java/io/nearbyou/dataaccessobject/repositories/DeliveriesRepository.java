@@ -1,6 +1,6 @@
-package io.nearbyou.domainObject.entities.repositories;
+package io.nearbyou.dataaccessobject.repositories;
 
-import io.nearbyou.domainObject.entities.Deliveries;
+import io.nearbyou.domainObject.models.impl.Deliveries;
 import org.springframework.data.mongodb.repository.MongoRepository;
 /**
  * Created by Kais NEFFATI on 19/12/2017.

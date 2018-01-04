@@ -1,10 +1,10 @@
-package io.nearbyou.domainObject.entities;
+package io.nearbyou.domainObject.models.impl;
 
+import io.nearbyou.domainObject.models.PersistedEntity;
 import io.nearbyou.domainValue.DeliverableQuantity;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -15,7 +15,7 @@ public class Deliverable extends PersistedEntity {
     private String title;
     private DeliverableQuantity quantities;
     private String price;
-    private ArrayList<File> mediaIds;
+    private ArrayList<String> mediaIds;
 
     @DBRef
     private Deliveries partOfDeliveries;
@@ -52,11 +52,11 @@ public class Deliverable extends PersistedEntity {
         this.partOfDeliveries = partOfDeliveries;
     }
 
-    public ArrayList<File> getMediaIds() {
+    public ArrayList<String> getMediaIds() {
         return mediaIds;
     }
 
-    public void setMediaIds(ArrayList<File> mediaIds) {
+    public void setMediaIds(ArrayList<String> mediaIds) {
         this.mediaIds = mediaIds;
     }
 }

@@ -1,4 +1,4 @@
-package io.nearbyou.domainObject.entities;
+package io.nearbyou.domainObject.models;
 
 import java.util.Calendar;
 

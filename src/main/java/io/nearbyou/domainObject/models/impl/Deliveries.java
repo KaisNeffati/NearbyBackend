@@ -1,6 +1,7 @@
-package io.nearbyou.domainObject.entities;
+package io.nearbyou.domainObject.models.impl;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.nearbyou.domainObject.models.PersistedEntity;
 import io.nearbyou.domainValue.GeoLocation;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;

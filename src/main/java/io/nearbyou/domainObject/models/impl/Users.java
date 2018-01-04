@@ -1,5 +1,6 @@
-package io.nearbyou.domainObject.entities;
+package io.nearbyou.domainObject.models.impl;
 
+import io.nearbyou.domainObject.models.PersistedEntity;
 import io.nearbyou.domainValue.Ranking;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
