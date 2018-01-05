@@ -5,6 +5,7 @@ import io.nearbyou.datatransferobject.impl.DeliverableDTO;
 import io.nearbyou.domainObject.models.impl.DeliverableDO;
 import org.springframework.beans.factory.annotation.Autowired;
 
+
 public class DeliverableMapper implements Mapper<DeliverableDO, DeliverableDTO> {
     private final MediaMapper mediaMapper;
 
