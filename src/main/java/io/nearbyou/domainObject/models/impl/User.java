@@ -9,11 +9,9 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-/**
- * Created by Kais NEFFATI on 19/12/2017.
- */
+
 @Document(collection = "users")
-public class Users extends PersistedEntity {
+public class User extends PersistedEntity {
     private String email;
     @Field("brith_date")
     private Calendar birthDate;
@@ -27,10 +25,14 @@ public class Users extends PersistedEntity {
     private String gender;
     private ArrayList<String> phones;
     @DBRef
-    private ArrayList<Deliveries> deliveries;
+    private ArrayList<DeliveriesDO> deliveries;
     @DBRef
-    private ArrayList<Deliveries> favorites;
+    private ArrayList<DeliveriesDO> favorites;
     private Ranking ranking;
+
+    public User(long id) {
+        super(id);
+    }
 
     public String getEmail() {
         return email;
@@ -104,11 +106,11 @@ public class Users extends PersistedEntity {
         this.phones = phones;
     }
 
-    public ArrayList<Deliveries> getDeliveries() {
+    public ArrayList<DeliveriesDO> getDeliveries() {
         return deliveries;
     }
 
-    public void setDeliveries(ArrayList<Deliveries> deliveries) {
+    public void setDeliveries(ArrayList<DeliveriesDO> deliveries) {
         this.deliveries = deliveries;
     }
 
@@ -120,11 +122,11 @@ public class Users extends PersistedEntity {
         this.ranking = ranking;
     }
 
-    public ArrayList<Deliveries> getFavorites() {
+    public ArrayList<DeliveriesDO> getFavorites() {
         return favorites;
     }
 
-    public void setFavorites(ArrayList<Deliveries> favorites) {
+    public void setFavorites(ArrayList<DeliveriesDO> favorites) {
         this.favorites = favorites;
     }
 }

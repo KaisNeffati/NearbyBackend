@@ -1,17 +1,21 @@
 package io.nearbyou.domainObject.models;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 
-/**
- * Created by Kais NEFFATI on 19/12/2017.
- */
+
 public abstract class PersistedEntity {
-    private String id;
+    private long id;
     private boolean deleted;
     private Calendar deletedAt;
-    private boolean created;
     private Calendar createdAt;
     private Calendar updatedAt;
+
+    public PersistedEntity(long id) {
+        this.id = id;
+        this.createdAt = new GregorianCalendar();
+        this.deleted = false;
+    }
 
     public boolean isDeleted() {
         return deleted;
@@ -27,14 +31,6 @@ public abstract class PersistedEntity {
 
     public void setDeletedAt(Calendar deletedAt) {
         this.deletedAt = deletedAt;
-    }
-
-    public boolean isCreated() {
-        return created;
-    }
-
-    public void setCreated(boolean created) {
-        this.created = created;
     }
 
     public Calendar getCreatedAt() {
@@ -53,11 +49,11 @@ public abstract class PersistedEntity {
         this.updatedAt = updatedAt;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 }

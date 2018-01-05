@@ -1,8 +1,8 @@
 package io.nearbyou.dataaccessobject.impl;
 
 import io.nearbyou.dataaccessobject.DeliveriesDao;
-import io.nearbyou.domainObject.models.impl.Deliveries;
 import io.nearbyou.dataaccessobject.repositories.DeliveriesRepository;
+import io.nearbyou.domainObject.models.impl.DeliveriesDO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
@@ -24,28 +24,28 @@ public class DeliveriesDaoImpl implements DeliveriesDao {
     }
 
     @Override
-    public Collection<Deliveries> findAll() {
+    public Collection<DeliveriesDO> findAll() {
         return deliveriesRepository.findAll();
     }
 
     @Override
-    public Deliveries findOneById(long id) {
+    public DeliveriesDO findOneById(long id) {
         return deliveriesRepository.findOne(id);
     }
 
     @Override
-    public Deliveries removeDeliveriesById(long id) {
+    public DeliveriesDO removeDeliveriesById(long id) {
         return null;
     }
 
     @Override
-    public Deliveries updateDeliveries(Deliveries deliveries) {
-        return deliveriesRepository.save(deliveries);
+    public DeliveriesDO updateDeliveries(DeliveriesDO deliveriesDO) {
+        return deliveriesRepository.save(deliveriesDO);
     }
 
     @Override
-    public Deliveries insertDeliveries(Deliveries deliveries) {
-        return deliveriesRepository.insert(deliveries);
+    public DeliveriesDO insertDeliveries(DeliveriesDO deliveriesDO) {
+        return deliveriesRepository.insert(deliveriesDO);
     }
 
 }

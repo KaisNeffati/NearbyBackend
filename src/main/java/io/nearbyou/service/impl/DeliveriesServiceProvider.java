@@ -1,7 +1,7 @@
 package io.nearbyou.service.impl;
 
 import io.nearbyou.dataaccessobject.DeliveriesDao;
-import io.nearbyou.domainObject.models.impl.Deliveries;
+import io.nearbyou.domainObject.models.impl.DeliveriesDO;
 import io.nearbyou.domainObject.requests.DeliveriesSearchRequest;
 import io.nearbyou.service.DeliveriesService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,22 +24,23 @@ public class DeliveriesServiceProvider implements DeliveriesService {
     }
 
     @Override
-    public Collection<Deliveries> search(DeliveriesSearchRequest request) {
+    public Collection<DeliveriesDO> search(DeliveriesSearchRequest request) {
         return null;
     }
 
     @Override
-    public Deliveries create(Deliveries deliveries) {
+    public DeliveriesDO create(DeliveriesDO deliveries) {
         return deliveriesDao.insertDeliveries(deliveries);
     }
 
     @Override
-    public Deliveries update(Deliveries deliveries) {
+    public DeliveriesDO update(DeliveriesDO deliveries) {
         return deliveriesDao.updateDeliveries(deliveries);
     }
 
     @Override
-    public Collection<Deliveries> findAll() {
+    public Collection<DeliveriesDO> findAll() {
         return deliveriesDao.findAll();
     }
+
 }

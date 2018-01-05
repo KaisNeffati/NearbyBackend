@@ -1,8 +1,6 @@
 package io.nearbyou.domainValue;
 
-/**
- * Created by Kais NEFFATI on 19/12/2017.
- */
+
 public class GeoLocation {
     private Long lat;
     private Long lng;
