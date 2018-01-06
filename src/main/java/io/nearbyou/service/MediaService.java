@@ -1,12 +1,11 @@
 package io.nearbyou.service;
 
-import java.io.File;
+import org.springframework.web.multipart.MultipartFile;
 
 public interface MediaService {
 
-    String uploadMedia(File file);
+    String save(MultipartFile file);
 
-    File getFile(String uri);
-
+    byte[] loadById(String id);
 
 }

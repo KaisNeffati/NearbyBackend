@@ -2,8 +2,8 @@ package io.nearbyou.datatransferobject.impl;
 
 import io.nearbyou.datatransferobject.DTO;
 import io.nearbyou.domainValue.GeoLocation;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.util.List;
 
 
@@ -15,7 +15,7 @@ public class DeliveriesDTO extends DTO {
 
     private GeoLocation location;
 
-    private List<File> mediaFiles;
+    private List<MultipartFile> mediaFiles;
 
     private long radius;
 
@@ -23,7 +23,17 @@ public class DeliveriesDTO extends DTO {
 
     private long userId;
 
-    public DeliveriesDTO(long id, String title, String description, GeoLocation location, List<File> mediaFiles, long radius, List<DeliverableDTO> deliverableDTOs, long userId) {
+    public DeliveriesDTO(long id, String title, String description, GeoLocation location, long radius, List<DeliverableDTO> deliverableDTOs, long userId) {
+        super(id);
+        this.title = title;
+        this.description = description;
+        this.location = location;
+        this.radius = radius;
+        this.deliverableDTOs = deliverableDTOs;
+        this.userId = userId;
+    }
+
+    public DeliveriesDTO(long id, String title, String description, GeoLocation location, List<MultipartFile> mediaFiles, long radius, List<DeliverableDTO> deliverableDTOs, long userId) {
         super(id);
         this.title = title;
         this.description = description;
@@ -62,11 +72,11 @@ public class DeliveriesDTO extends DTO {
         this.location = location;
     }
 
-    public List<File> getMediaFiles() {
+    public List<MultipartFile> getMediaFiles() {
         return mediaFiles;
     }
 
-    public void setMediaFiles(List<File> mediaFiles) {
+    public void setMediaFiles(List<MultipartFile> mediaFiles) {
         this.mediaFiles = mediaFiles;
     }
 
@@ -94,6 +104,15 @@ public class DeliveriesDTO extends DTO {
         this.userId = userId;
     }
 
+    public static class DeliveriesDTOResponse extends DeliveriesDTO {
+        List<byte[]> mediaFiles;
+
+        public DeliveriesDTOResponse(long id, String title, String description, GeoLocation location, List<byte[]> mediaFiles, long radius, List<DeliverableDTO> deliverableDTOs, long userId) {
+            super(id, title, description, location, radius, deliverableDTOs, userId);
+            this.mediaFiles = mediaFiles;
+        }
+    }
+
     public static class DeliveriesDTOBuilder {
         private long id;
 
@@ -103,7 +122,7 @@ public class DeliveriesDTO extends DTO {
 
         private GeoLocation location;
 
-        private List<File> mediaFiles;
+        private List<byte[]> mediaFiles;
 
         private long radius;
 
@@ -126,7 +145,7 @@ public class DeliveriesDTO extends DTO {
             return this;
         }
 
-        public DeliveriesDTOBuilder setMediaFiles(List<File> mediaFiles) {
+        public DeliveriesDTOBuilder setMediaFiles(List<byte[]> mediaFiles) {
             this.mediaFiles = mediaFiles;
             return this;
         }
@@ -152,7 +171,7 @@ public class DeliveriesDTO extends DTO {
         }
 
         public DeliveriesDTO createDeliveriesDTO() {
-            return new DeliveriesDTO(id, title, description, location, mediaFiles, radius, deliverableDTOs, userId);
+            return new DeliveriesDTOResponse(id, title, description, location, mediaFiles, radius, deliverableDTOs, userId);
         }
 
     }

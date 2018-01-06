@@ -19,12 +19,13 @@ public class DeliveriesMapper implements Mapper<DeliveriesDO, DeliveriesDTO> {
 
     private final DeliverableMapper deliverableMapper;
 
-    private UserService userService;
+    private final UserService userService;
 
     @Autowired
-    public DeliveriesMapper(MediaMapper mediaMapper, DeliverableMapper deliveriesMapper) {
+    public DeliveriesMapper(MediaMapper mediaMapper, DeliverableMapper deliveriesMapper, UserService userService) {
         this.mediaMapper = mediaMapper;
         this.deliverableMapper = deliveriesMapper;
+        this.userService = userService;
     }
 
     @Override
@@ -32,7 +33,7 @@ public class DeliveriesMapper implements Mapper<DeliveriesDO, DeliveriesDTO> {
     public DeliveriesDO makeDO(DeliveriesDTO dTO) {
         List<DeliverableDO> deliverableDOItems = deliverableMapper.makeDOList(dTO.getDeliverableDTOs());
         DeliveriesDO deliveriesDO = new DeliveriesDO(dTO.getId(), dTO.getTitle(), dTO.getDescription(), dTO.getLocation(),
-                mediaMapper.makeUriList(dTO.getMediaFiles()), dTO.getRadius(), deliverableDOItems
+                mediaMapper.saveList(dTO.getMediaFiles()), dTO.getRadius(), deliverableDOItems
                 , userService.getUsetById(dTO.getUserId()));
         deliverableDOItems.forEach(e -> e.setPartOfDeliveries(deliveriesDO));
         return deliveriesDO;

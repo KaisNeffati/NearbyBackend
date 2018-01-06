@@ -17,7 +17,7 @@ public class DeliverableMapper implements Mapper<DeliverableDO, DeliverableDTO> 
     @Override
     public DeliverableDO makeDO(DeliverableDTO dTO) {
         return new DeliverableDO(dTO.getId(), dTO.getTitle(), dTO.getQuantities(), dTO.getPrice(), dTO.getCurrency(),
-                mediaMapper.makeUriList(dTO.getMediaFiles()));
+                mediaMapper.saveList(dTO.getMediaFiles()));
     }
 
     @Override
