@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by Kais NEFFATI on 04/01/2018.
@@ -28,8 +29,9 @@ public class DeliveriesController {
     }
 
     @GetMapping("/")
-    public Collection<DeliveriesDO> findAll() {
-        return deliveriesSerivce.findAll();
+    public Collection<DeliveriesDTO> findAll() {
+        List<DeliveriesDO> all = deliveriesSerivce.findAll();
+        return mapper.makeDTOList(all);
     }
 
     @PostMapping("/search")
@@ -40,9 +42,7 @@ public class DeliveriesController {
     @PostMapping("/")
     public DeliveriesDTO create(@RequestBody DeliveriesDTO deliveriesDTO) {
         DeliveriesDO deliveriesDO = mapper.makeDO(deliveriesDTO);
-        DeliveriesDO dO = deliveriesSerivce.create(deliveriesDO);
-        DeliveriesDTO deliveriesDTO1 = mapper.makeDTO(dO);
-        return deliveriesDTO1;
+        return mapper.makeDTO(deliveriesSerivce.create(deliveriesDO));
     }
 
     @PutMapping("/")

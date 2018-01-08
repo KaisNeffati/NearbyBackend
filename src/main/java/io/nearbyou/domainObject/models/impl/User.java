@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 
-@Document(collection = "users")
+@Document(collection = "user")
 public class User extends PersistedEntity {
     private String email;
     @Field("brith_date")

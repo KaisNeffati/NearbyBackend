@@ -3,13 +3,14 @@ package io.nearbyou.domainObject.models.impl;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.nearbyou.domainObject.models.PersistedEntity;
 import io.nearbyou.domainValue.GeoLocation;
+import io.nearbyou.utils.CascadeSave;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
 
-@Document
+@Document(collection = "deliveries")
 public class DeliveriesDO extends PersistedEntity {
 
     private String title;
@@ -18,7 +19,7 @@ public class DeliveriesDO extends PersistedEntity {
 
     private GeoLocation location;
 
-    private List<String> mediaUrl;
+    private List<String> mediaIds;
 
     @JsonIgnore
     private int min_price;
@@ -26,6 +27,7 @@ public class DeliveriesDO extends PersistedEntity {
     private long radius;
 
     @DBRef
+    @CascadeSave
     private List<DeliverableDO> deliverableDOItems;
 
     @DBRef
@@ -34,24 +36,27 @@ public class DeliveriesDO extends PersistedEntity {
     @DBRef
     private List<User> favoriteForUsers;
 
-    public DeliveriesDO(long id, String title, String description, GeoLocation location, List<String> mediaUrl, long radius, List<DeliverableDO> deliverableDOItems, User user) {
+    public DeliveriesDO() {
+    }
+
+    public DeliveriesDO(long id, String title, String description, GeoLocation location, List<String> mediaIds, long radius, List<DeliverableDO> deliverableDOItems, User user) {
         super(id);
         this.title = title;
         this.description = description;
         this.location = location;
-        this.mediaUrl = mediaUrl;
+        this.mediaIds = mediaIds;
         this.radius = radius;
         this.deliverableDOItems = deliverableDOItems;
         this.user = user;
         this.setMin_price();
     }
 
-    public List<String> getMediaUrl() {
-        return mediaUrl;
+    public List<String> getMediaIds() {
+        return mediaIds;
     }
 
-    public void setMediaUrl(List<String> mediaUrl) {
-        this.mediaUrl = mediaUrl;
+    public void setMediaIds(List<String> mediaIds) {
+        this.mediaIds = mediaIds;
     }
 
     public List<DeliverableDO> getDeliverableDOItems() {

@@ -2,13 +2,13 @@ package io.nearbyou.dataaccessobject;
 
 import io.nearbyou.domainObject.models.impl.DeliveriesDO;
 
-import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by Kais NEFFATI on 21/12/2017.
  */
 public interface DeliveriesDao {
-    Collection<DeliveriesDO> findAll();
+    List<DeliveriesDO> findAll();
 
     DeliveriesDO findOneById(long id);
 
@@ -16,5 +16,5 @@ public interface DeliveriesDao {
 
     DeliveriesDO updateDeliveries(DeliveriesDO deliveriesDO);
 
-    DeliveriesDO insertDeliveries(DeliveriesDO deliveriesDO);
+    DeliveriesDO addDeliveries(DeliveriesDO deliveriesDO);
 }

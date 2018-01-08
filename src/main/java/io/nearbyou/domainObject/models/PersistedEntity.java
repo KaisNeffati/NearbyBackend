@@ -1,15 +1,25 @@
 package io.nearbyou.domainObject.models;
 
+import org.springframework.data.annotation.Id;
+
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 
 public abstract class PersistedEntity {
+    @Id
     private long id;
+
     private boolean deleted;
+
     private Calendar deletedAt;
+
     private Calendar createdAt;
+
     private Calendar updatedAt;
+
+    public PersistedEntity() {
+    }
 
     public PersistedEntity(long id) {
         this.id = id;

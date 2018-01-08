@@ -50,7 +50,7 @@ public class DeliveriesMapper implements Mapper<DeliveriesDO, DeliveriesDTO> {
                 .setRadius(dO.getRadius())
 //                .setUserID(dO.getUsers().getId())
                 .setDeliverableDTOs(deliverableMapper.makeDTOList(dO.getDeliverableDOItems()))
-                .setMediaIds(dO.getMediaUrl());
+                .setMediaIds(dO.getMediaIds());
         return deliveriesDTOBuilder.createDeliveriesDTO();
     }
 

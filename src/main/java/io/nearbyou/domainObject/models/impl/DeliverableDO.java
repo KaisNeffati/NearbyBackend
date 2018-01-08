@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Currency;
 import java.util.List;
 
-@Document
+@Document(collection = "deliverable")
 public class DeliverableDO extends PersistedEntity {
     private String title;
     private DeliverableQuantity quantities;

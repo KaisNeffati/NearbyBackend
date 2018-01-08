@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
-import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by Kais NEFFATI on 21/12/2017.
@@ -24,7 +24,7 @@ public class DeliveriesDaoImpl implements DeliveriesDao {
     }
 
     @Override
-    public Collection<DeliveriesDO> findAll() {
+    public List<DeliveriesDO> findAll() {
         return deliveriesRepository.findAll();
     }
 
@@ -44,8 +44,8 @@ public class DeliveriesDaoImpl implements DeliveriesDao {
     }
 
     @Override
-    public DeliveriesDO insertDeliveries(DeliveriesDO deliveriesDO) {
-        return deliveriesRepository.insert(deliveriesDO);
+    public DeliveriesDO addDeliveries(DeliveriesDO deliveriesDO) {
+        return deliveriesRepository.save(deliveriesDO);
     }
 
 }

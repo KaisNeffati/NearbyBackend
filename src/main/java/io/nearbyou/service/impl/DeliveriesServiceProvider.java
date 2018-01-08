@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by Kais NEFFATI on 04/01/2018.
@@ -24,13 +24,13 @@ public class DeliveriesServiceProvider implements DeliveriesService {
     }
 
     @Override
-    public Collection<DeliveriesDO> search(DeliveriesSearchRequest request) {
+    public List<DeliveriesDO> search(DeliveriesSearchRequest request) {
         return null;
     }
 
     @Override
     public DeliveriesDO create(DeliveriesDO deliveries) {
-        return deliveriesDao.insertDeliveries(deliveries);
+        return deliveriesDao.addDeliveries(deliveries);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class DeliveriesServiceProvider implements DeliveriesService {
     }
 
     @Override
-    public Collection<DeliveriesDO> findAll() {
+    public List<DeliveriesDO> findAll() {
         return deliveriesDao.findAll();
     }
 
