@@ -2,7 +2,6 @@ package io.nearbyou.datatransferobject.impl;
 
 import io.nearbyou.datatransferobject.DTO;
 import io.nearbyou.domainValue.GeoLocation;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -15,13 +14,17 @@ public class DeliveriesDTO extends DTO {
 
     private GeoLocation location;
 
-    private List<MultipartFile> mediaFiles;
+    private List<String> mediaIds;
 
     private long radius;
 
     private List<DeliverableDTO> deliverableDTOs;
 
     private long userId;
+
+    public DeliveriesDTO() {
+
+    }
 
     public DeliveriesDTO(long id, String title, String description, GeoLocation location, long radius, List<DeliverableDTO> deliverableDTOs, long userId) {
         super(id);
@@ -33,15 +36,25 @@ public class DeliveriesDTO extends DTO {
         this.userId = userId;
     }
 
-    public DeliveriesDTO(long id, String title, String description, GeoLocation location, List<MultipartFile> mediaFiles, long radius, List<DeliverableDTO> deliverableDTOs, long userId) {
+    public DeliveriesDTO(long id, String title, String description, GeoLocation location, List<String> mediaIds, long radius, List<DeliverableDTO> deliverableDTOs, long userId) {
         super(id);
         this.title = title;
         this.description = description;
         this.location = location;
-        this.mediaFiles = mediaFiles;
+        this.mediaIds = mediaIds;
         this.radius = radius;
         this.deliverableDTOs = deliverableDTOs;
         this.userId = userId;
+    }
+
+    public DeliveriesDTO(long id, String title, String description, GeoLocation location, List<String> mediaIds, long radius, List<DeliverableDTO> deliverableDTOs) {
+        super(id);
+        this.title = title;
+        this.description = description;
+        this.location = location;
+        this.mediaIds = mediaIds;
+        this.radius = radius;
+        this.deliverableDTOs = deliverableDTOs;
     }
 
     public static DeliveriesDTOBuilder newBuilder() {
@@ -72,12 +85,12 @@ public class DeliveriesDTO extends DTO {
         this.location = location;
     }
 
-    public List<MultipartFile> getMediaFiles() {
-        return mediaFiles;
+    public List<String> getMediaIds() {
+        return mediaIds;
     }
 
-    public void setMediaFiles(List<MultipartFile> mediaFiles) {
-        this.mediaFiles = mediaFiles;
+    public void setMediaIds(List<String> mediaIds) {
+        this.mediaIds = mediaIds;
     }
 
     public long getRadius() {
@@ -104,15 +117,6 @@ public class DeliveriesDTO extends DTO {
         this.userId = userId;
     }
 
-    public static class DeliveriesDTOResponse extends DeliveriesDTO {
-        List<byte[]> mediaFiles;
-
-        public DeliveriesDTOResponse(long id, String title, String description, GeoLocation location, List<byte[]> mediaFiles, long radius, List<DeliverableDTO> deliverableDTOs, long userId) {
-            super(id, title, description, location, radius, deliverableDTOs, userId);
-            this.mediaFiles = mediaFiles;
-        }
-    }
-
     public static class DeliveriesDTOBuilder {
         private long id;
 
@@ -122,7 +126,7 @@ public class DeliveriesDTO extends DTO {
 
         private GeoLocation location;
 
-        private List<byte[]> mediaFiles;
+        private List<String> mediaIds;
 
         private long radius;
 
@@ -145,8 +149,8 @@ public class DeliveriesDTO extends DTO {
             return this;
         }
 
-        public DeliveriesDTOBuilder setMediaFiles(List<byte[]> mediaFiles) {
-            this.mediaFiles = mediaFiles;
+        public DeliveriesDTOBuilder setMediaIds(List<String> mediaIds) {
+            this.mediaIds = mediaIds;
             return this;
         }
 
@@ -171,7 +175,7 @@ public class DeliveriesDTO extends DTO {
         }
 
         public DeliveriesDTO createDeliveriesDTO() {
-            return new DeliveriesDTOResponse(id, title, description, location, mediaFiles, radius, deliverableDTOs, userId);
+            return new DeliveriesDTO(id, title, description, location, mediaIds, radius, deliverableDTOs, userId);
         }
 
     }

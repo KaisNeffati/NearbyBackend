@@ -2,18 +2,19 @@ package io.nearbyou.datatransferobject.impl;
 
 import io.nearbyou.datatransferobject.DTO;
 import io.nearbyou.domainValue.DeliverableQuantity;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Currency;
 import java.util.List;
-
 
 public class DeliverableDTO extends DTO {
     private String title;
     private DeliverableQuantity quantities;
     private Currency currency;
     private int price;
-    private List<MultipartFile> mediaFiles;
+    private List<String> mediaIds;
+
+    public DeliverableDTO() {
+    }
 
     public DeliverableDTO(long id, String title, DeliverableQuantity quantities, int price) {
         super(id);
@@ -22,12 +23,12 @@ public class DeliverableDTO extends DTO {
         this.price = price;
     }
 
-    public DeliverableDTO(long id, String title, DeliverableQuantity quantities, int price, List<MultipartFile> mediaFiles) {
+    public DeliverableDTO(long id, String title, DeliverableQuantity quantities, int price, List<String> mediaIds) {
         super(id);
         this.title = title;
         this.quantities = quantities;
         this.price = price;
-        this.mediaFiles = mediaFiles;
+        this.mediaIds = mediaIds;
     }
 
     public static DeliverableDTOBuilder newBuilder() {
@@ -58,33 +59,24 @@ public class DeliverableDTO extends DTO {
         this.price = price;
     }
 
-    public List<MultipartFile> getMediaFiles() {
-        return mediaFiles;
+    public List<String> getMediaIds() {
+        return mediaIds;
     }
 
-    public void setMediaFiles(List<MultipartFile> mediaFiles) {
-        this.mediaFiles = mediaFiles;
+    public void setMediaIds(List<String> mediaIds) {
+        this.mediaIds = mediaIds;
     }
 
     public Currency getCurrency() {
         return this.currency;
     }
 
-    private static class DeliverableDTOResponse extends DeliverableDTO {
-        private List<byte[]> mediaFiles;
-
-        public DeliverableDTOResponse(long id, String title, DeliverableQuantity quantities, int price, List<byte[]> mediaFiles) {
-            super(id, title, quantities, price);
-            this.mediaFiles = mediaFiles;
-        }
-    }
-
-    private static class DeliverableDTOBuilder {
+    public static class DeliverableDTOBuilder {
         private long id;
         private String title;
         private DeliverableQuantity quantities;
         private int price;
-        private List<byte[]> mediaFiles;
+        private List<String> mediaIds;
 
         public DeliverableDTOBuilder setTitle(String title) {
             this.title = title;
@@ -102,11 +94,11 @@ public class DeliverableDTO extends DTO {
         }
 
         public DeliverableDTO createDeliveriesDTO() {
-            return new DeliverableDTOResponse(id, title, quantities, price, mediaFiles);
+            return new DeliverableDTO(id, title, quantities, price, mediaIds);
         }
 
-        public DeliverableDTOBuilder setMediaFiles(List<byte[]> mediaFiles) {
-            this.mediaFiles = mediaFiles;
+        public DeliverableDTOBuilder setMediaIds(List<String> mediaIds) {
+            this.mediaIds = mediaIds;
             return this;
         }
 
